@@ -1,10 +1,10 @@
-# Sistema de Cadastro de Bandas
+# Sistema de Gerenciamento de Produtos
 
-Sistema desktop desenvolvido em C# Windows Forms para gerenciamento e cadastro de bandas musicais.
+Sistema desktop desenvolvido em C# Windows Forms para gerenciamento e cadastro de produtos em um supermercado.
 
 ## 📋 Descrição
 
-Este projeto é um sistema de cadastro que permite gerenciar informações sobre bandas musicais, incluindo nome, número de integrantes, ranking e gênero musical. O sistema utiliza MySQL como banco de dados e oferece uma interface gráfica intuitiva para cadastro e busca de informações.
+Este projeto é um sistema de cadastro que permite gerenciar informações sobre produtos, incluindo nome, quantidade em estoque, setor e seu preço. O sistema utiliza MySQL como banco de dados e oferece uma interface gráfica intuitiva para cadastro e busca de informações.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -25,24 +25,24 @@ O projeto utiliza as seguintes bibliotecas NuGet:
 
 O sistema utiliza duas tabelas principais:
 
-### Tabela `generos`
-- `idgenero` (INT, AUTO_INCREMENT, PRIMARY KEY)
-- `genero` (VARCHAR(45))
+### Tabela `setor`
+- `idsetor` (INT, AUTO_INCREMENT, PRIMARY KEY)
+- `nomesetor` (VARCHAR(45))
 
 Gêneros pré-cadastrados: Rock, Metal, Pagode, Gospel, Funk
 
-### Tabela `bandas`
-- `idbandas` (INT, AUTO_INCREMENT, PRIMARY KEY)
+### Tabela `produtos`
+- `idproduto` (INT, AUTO_INCREMENT, PRIMARY KEY)
 - `nome` (VARCHAR(45))
-- `integrantes` (INT)
-- `ranking` (INT)
-- `fk_genero` (INT, FOREIGN KEY)
+- `quantidade` (INT)
+- `preco` (DOUBLE)
+- `fk_setor` (INT, FOREIGN KEY)
 
 ### Stored Procedures
 
-- `sp_insereBanda` - Insere uma nova banda no banco
-- `sp_listaBandas` - Lista todas as bandas com seus gêneros
-- `sp_listaGeneros` - Lista todos os gêneros disponíveis
+- `sp_insereProduto` - Insere um novo produto
+- `sp_listaProdutos` - Lista todos os produtos com seus setores, estoques e preços.
+- `sp_listaSetor` - Lista todos os Setores existentes até então
 
 ## ⚙️ Instalação e Configuração
 
@@ -87,27 +87,13 @@ Gêneros pré-cadastrados: Rock, Metal, Pagode, Gospel, Funk
 
 ## 🎯 Funcionalidades
 
-- ✅ **Cadastro de Bandas** - Adicione novas bandas com informações completas
-- 🔍 **Busca de Bandas** - Pesquise bandas cadastradas
-- 📝 **Alteração de Dados** - Edite informações de bandas existentes
-- 🗑️ **Remoção de Bandas** - Exclua registros do sistema
-- 🎵 **Gerenciamento de Gêneros** - Adicione novos gêneros musicais
-- 📊 **Visualização em Lista** - Veja todas as bandas cadastradas
+- ✅ **Cadastro de Produtos** - Adicione novos Produtos com informações completas
+- 🔍 **Busca de Produtos** - Pesquise Produtos cadastrados
+- 📝 **Alteração de Dados** - Edite informações de produtos existentes
+- 🗑️ **Remoção de Produtos** - Exclua registros do sistema
+- 🛒 **Gerenciamento de Setores** - Adicione novos setores
+- 📊 **Visualização em Lista** - Veja todas os produtos cadastrados
 
-## 📁 Estrutura do Projeto
-
-```
-SistemaCadastro/
-├── Program.cs              # Ponto de entrada da aplicação
-├── Sistema.cs              # Lógica principal do formulário
-├── Sistema.Designer.cs     # Designer do Windows Forms
-├── App.config             # Configurações da aplicação
-├── packages.config        # Configuração de pacotes NuGet
-└── Properties/            # Propriedades do projeto
-    ├── AssemblyInfo.cs
-    ├── Resources.resx
-    └── Settings.settings
-```
 
 ## 🎨 Interface
 
@@ -121,12 +107,9 @@ A navegação é facilitada por botões laterais com indicador visual de aba sel
 
 ## 📝 Licença
 
-Este projeto é um trabalho acadêmico desenvolvido para fins educacionais.
+Este projeto é um trabalho acadêmico desenvolvido para fins de aprendizado e para cumprir os requisitos de conclusão do período.
 
 ## 👥 Autor
 
-Desenvolvido como projeto do curso de Linguagem I
+Desenvolvido como projeto final da matéria de Linguagem I no curso de Bacharelado em Sistemas da Informação por Alexandre Costa Penha da Silva
 
----
-
-**Nota**: Este é um projeto modelo para fins educacionais. Certifique-se de implementar as validações e tratamento de erros adequados antes de usar em produção.
